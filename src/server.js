@@ -2,8 +2,8 @@ const express = require('express') // commonjs
 //import express from 'express'; // es modules
 
 const app = express() // app express
-const port = process.env.PORT // port => hardcode
-const hostname = process.env.HOSTNAME
+const port = process.env.PORT || 8080 // port => hardcode
+const hostname = process.env.HOSTNAME || 'localhost'
 require('dotenv').config()
 
 console.log('>>> check env:', process.env) // can remove this
@@ -28,5 +28,5 @@ app.get('/hiep', (req, res) => {
 })
 
 app.listen(port, hostname, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening at http://${hostname}:${port}`)
 })
