@@ -1,21 +1,14 @@
-const express = require('express') // commonjs
-const path = require('path');// import module path
-//import express from 'express'; // es modules
-
-const app = express() // app express
-const port = process.env.PORT || 8080 // port => hardcode
-const hostname = process.env.HOSTNAME || 'localhost'
 require('dotenv').config()
-
-console.log('>>> check env:', process.env) // can remove this
+const express = require('express') // commonjs
+const path = require('path') // import module path
+//import express from 'express'; // es modules
+const configViewEngine = require('./config/viewEngine')
+const app = express() // app express
+const port = process.env.PORT || 3030 // port => hardcode
+const hostname = process.env.HOSTNAME || 'localhost'
 
 //config template engine
-app.set('views', './src/views')
-//app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs')
-
-//config static files
-app.use(express.static(path.join(__dirname, 'public')));
+configViewEngine(app)
 
 //khai bao routes
 app.get('/', (req, res) => {
