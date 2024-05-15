@@ -1,8 +1,12 @@
 const express = require('express') // commonjs
 //import express from 'express'; // es modules
 
-const app = express();// app express
-const port = 8080;// port => hardcode
+const app = express() // app express
+const port = process.env.PORT // port => hardcode
+const hostname = process.env.HOSTNAME
+require('dotenv').config()
+
+console.log('>>> check env:', process.env) // can remove this
 
 //config template engine
 app.set('views', './src/views')
@@ -23,6 +27,6 @@ app.get('/hiep', (req, res) => {
   res.render('sample.ejs')
 })
 
-app.listen(port, () => {
+app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`)
 })
