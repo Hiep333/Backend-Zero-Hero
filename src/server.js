@@ -4,7 +4,7 @@ const path = require('path') // import module path
 //import express from 'express'; // es modules
 const configViewEngine = require('./config/viewEngine')
 const app = express() // app express
-const port = process.env.PORT || 3030 // port => hardcode
+const port = process.env.PORT || 9999 // port => hardcode
 const hostname = process.env.HOSTNAME || 'localhost'
 
 //config template engine
