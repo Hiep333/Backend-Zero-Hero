@@ -10,6 +10,7 @@ const hostname = process.env.HOSTNAME || 'localhost'
 //config template engine
 configViewEngine(app)
 
+
 //khai bao routes
 app.get('/', (req, res) => {
   res.send('Hello World!')
