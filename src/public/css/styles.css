@@ -32,3 +32,31 @@
     background-color: #04AA6D;
     color: white;
   }
+  .form-add-new{
+    width: 500px;
+    margin: 0 auto;
+    padding: 100px;
+    background-color: #c9d1a4;
+    border: px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .input-group {
+padding: 10px;
+  }
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 2px;
+    cursor: pointer;
+  
+}
