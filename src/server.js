@@ -1,27 +1,25 @@
 require('dotenv').config()
 const express = require('express') // commonjs
-const path = require('path') // import module path
 //import express from 'express'; // es modules
 const configViewEngine = require('./config/viewEngine')
+const webRoutes = require('./routes/web')
+const connection = require('./config/database.js')
+
 const app = express() // app express
-const port = process.env.PORT || 9999 // port => hardcode
+const port = process.env.PORT || 8080 // port => hardcode
 const hostname = process.env.HOSTNAME || 'localhost'
 
 //config template engine
 configViewEngine(app)
 
 //khai bao routes
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use('/', webRoutes)
 
-app.get('/abc', (req, res) => {
-  res.send('check abc!')
-})
+// test connection
 
-app.get('/hiep', (req, res) => {
-  // res.send('<h1>hiep ne</h1>')
-  res.render('sample.ejs')
+//simple query
+connection.query('SELECT * FROM users', (err, result, fields) => {
+  console.log('>>>result', result)
 })
 
 app.listen(port, hostname, () => {
