@@ -3,14 +3,8 @@ const connection = require('../config/database.js')
 const getHomePgage = (req, res) => {
   //preocess data
   //call model
-  let users = []
-  connection.query('SELECT * FROM users', (err, result, fields) => {
-    users = result
-    console.log('>>>result', result)
-    console.log('>>>check users: ', users)
-    res.send(JSON.stringify(users));
-  })
- 
+
+ return res.render('home.ejs')
 }
 
 const getABC = (req, res) => {
