@@ -3,9 +3,7 @@ const express = require('express') // commonjs
 //import express from 'express'; // es modules
 const configViewEngine = require('./config/viewEngine')
 const webRoutes = require('./routes/web')
-
-const mysql = require('mysql2')
-
+const connection = require('./config/database.js')
 
 const app = express() // app express
 const port = process.env.PORT || 8080 // port => hardcode
@@ -18,18 +16,10 @@ configViewEngine(app)
 app.use('/', webRoutes)
 
 // test connection
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '123456',
-  database: 'hoidanit',
-  port: 3307
-})
 
 //simple query
 connection.query('SELECT * FROM users', (err, result, fields) => {
-  console.log('>>>result',result);
-  console.log('>>>fields',fields);
+  console.log('>>>result', result)
 })
 
 app.listen(port, hostname, () => {
