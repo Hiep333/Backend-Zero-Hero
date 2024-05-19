@@ -1,6 +1,6 @@
 const connection = require('../config/database.js')
 
-const getHomePgage = (req, res) => {
+const getHomePage = (req, res) => {
   //preocess data
   //call model
 
@@ -17,11 +17,23 @@ const hiep = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-  console.log("check req.body :", req.body);
-  res.send('create a new user')
+  // let email = req.body.email;
+  // let name = req.body.myname;
+  // let city = req.body.city;
+  let { email, username, city } = req.body
+  console.log(email, username, city)
+
+  connection.query(
+    'insert into users (email, username, city) values (?,?,?)',
+    [email, username, city],
+    function (err, results) {
+      console.log(results) // results contains rows returned by server
+      res.send('Created user success') // fields contains extra meta data about results, if available
+    }
+  )
 }
 module.exports = {
-  getHomePgage,
+  getHomePage,
   getABC,
   hiep,
   postCreateUser
