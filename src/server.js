@@ -12,6 +12,10 @@ const hostname = process.env.HOSTNAME || 'localhost'
 //config template engine
 configViewEngine(app)
 
+//config req.body
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))// for form data
+
 //khai bao routes
 app.use('/', webRoutes)
 
