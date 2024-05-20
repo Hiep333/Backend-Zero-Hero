@@ -16,25 +16,27 @@ const hiep = (req, res) => {
   res.render('sample.ejs')
 }
 
-const postCreateUser = (req, res) => {
-  // let email = req.body.email;
-  // let name = req.body.myname;
-  // let city = req.body.city;
+const postCreateUser = async (req, res) => {
+  //preocess data
   let { email, username, city } = req.body
   console.log(email, username, city)
 
-  connection.query(
-    'insert into users (email, username, city) values (?,?,?)',
-    [email, username, city],
-    function (err, results) {
-      console.log(results) // results contains rows returned by server
-      res.send('Created user success') // fields contains extra meta data about results, if available
-    }
-  )
+  let [result,fields] = await connection.query(
+    `INSERT INTO users (email, username, city) VALUES (?,?,?)`,
+    [email, username, city]
+  );
+  res.send('Created user successfully');
+}
+
+
+
+const getCreatePage = (req, res) => {
+  return res.render('create.ejs')
 }
 module.exports = {
   getHomePage,
   getABC,
   hiep,
-  postCreateUser
+  postCreateUser,
+  getCreatePage
 }

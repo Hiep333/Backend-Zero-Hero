@@ -22,9 +22,9 @@ app.use('/', webRoutes)
 // test connection
 
 //simple query
-connection.query('SELECT * FROM users', (err, result, fields) => {
-  console.log('>>>result', result)
-})
+// connection.query('SELECT * FROM users', (err, result, fields) => {
+//   console.log('>>>result', result)
+// })
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening at http://${hostname}:${port}`)
