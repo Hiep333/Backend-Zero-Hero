@@ -38,10 +38,9 @@
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/create">Create User</a>
+        <a href="/update">Update User</a>
     </div>
     <div class="table-container">
-        <!-- access ejs file and convert object to string -->
-        <%=JSON.stringify(data) %>
         <div class="title">List Users</div>
         <table>
             <tr>
@@ -50,33 +49,31 @@
                 <th>UserName</th>
                 <th>City</th>
                 <th>Actions</th>
-            </tr>
-            <tr>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td>$100</td>
-                <td>$100</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
 
-                </td>
             </tr>
-            <tr>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td>Joe</td>
-                <td>Swanson</td>
-                <td>$300</td>
-            </tr>
-            <tr>
-                <td>Cleveland</td>
-                <td>Brown</td>
-                <td>$250</td>
-            </tr>
+
+            <% listUsers.forEach(function(user) { %>
+                <tr>
+                    <td>
+                        <%= user.id %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.username%>
+                    </td>
+                    <td>
+                        <%= user.city %>
+                    </td>
+                    <td>
+                        <a href="/update">Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <% }); %>
+              
+
         </table>
     </div>
 </body>

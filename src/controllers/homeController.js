@@ -4,7 +4,7 @@ const getHomePage =  async (req, res) => {
   //preocess data
   //call model
   let results = await getAllUsers();
-  return res.render('home.ejs', { data: results }) // read results
+  return res.render('home.ejs', { listUsers: results }) // read results
 }
 
 const getABC = (req, res) => {
@@ -12,7 +12,6 @@ const getABC = (req, res) => {
 }
 
 const hiep = (req, res) => {
-  // res.send('<h1>hiep ne</h1>')
   res.render('sample.ejs')
 }
 
@@ -31,10 +30,15 @@ const postCreateUser = async (req, res) => {
 const getCreatePage = (req, res) => {
   return res.render('create.ejs')
 }
+
+const getUpdatePage = (req, res) => {
+  return res.render('edit.ejs')
+}
 module.exports = {
   getHomePage,
   getABC,
   hiep,
   postCreateUser,
-  getCreatePage
+  getCreatePage,
+  getUpdatePage
 }
