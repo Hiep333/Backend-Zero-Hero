@@ -40,6 +40,8 @@
         <a href="/create">Create User</a>
     </div>
     <div class="table-container">
+        <!-- access ejs file and convert object to string -->
+        <%=JSON.stringify(data) %>
         <div class="title">List Users</div>
         <table>
             <tr>
@@ -47,12 +49,18 @@
                 <th>Email</th>
                 <th>UserName</th>
                 <th>City</th>
+                <th>Actions</th>
             </tr>
             <tr>
                 <td>Peter</td>
                 <td>Griffin</td>
                 <td>$100</td>
                 <td>$100</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+
+                </td>
             </tr>
             <tr>
                 <td>Lois</td>
