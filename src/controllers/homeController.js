@@ -1,5 +1,9 @@
 const connection = require('../config/database.js')
-const { getAllUsers, getUserById } = require('../services/CRUDServices.js')
+const {
+  getAllUsers,
+  getUserById,
+  updateUserById
+} = require('../services/CRUDServices.js')
 const getHomePage = async (req, res) => {
   //preocess data
   //call model
@@ -37,11 +41,24 @@ const getUpdatePage = async (req, res) => {
   let user = await getUserById(userID)
   res.render('edit.ejs', { userEdit: user }) // x <-y
 }
+
+const postUpdateUser = async (req, res) => {
+  //preocess data
+  let { email, username, city, userid } = req.body //
+  console.log(email, username, city, userid)
+
+  await updateUserById(email, username, city, userid)
+
+  // res.send('Updated user successfully')
+  res.redirect('/')
+}
 module.exports = {
   getHomePage,
   getABC,
   hiep,
   postCreateUser,
   getCreatePage,
-  getUpdatePage
+  getUpdatePage,
+  postUpdateUser,
+  updateUserById
 }
