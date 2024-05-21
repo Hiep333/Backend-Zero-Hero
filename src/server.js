@@ -12,15 +12,19 @@ const hostname = process.env.HOSTNAME || 'localhost'
 //config template engine
 configViewEngine(app)
 
+//config req.body
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))// for form data
+
 //khai bao routes
 app.use('/', webRoutes)
 
 // test connection
 
 //simple query
-connection.query('SELECT * FROM users', (err, result, fields) => {
-  console.log('>>>result', result)
-})
+// connection.query('SELECT * FROM users', (err, result, fields) => {
+//   console.log('>>>result', result)
+// })
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening at http://${hostname}:${port}`)
