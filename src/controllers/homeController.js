@@ -29,7 +29,7 @@ const postCreateUser = async (req, res) => {
     `INSERT INTO users (email, username, city) VALUES (?,?,?)`,
     [email, username, city]
   )
-  res.send('Created user successfully')
+  res.redirect('/')
 }
 
 const getCreatePage = (req, res) => {
@@ -64,7 +64,7 @@ const postDeleteUser = async (req, res) => {
 
 const postHandleRemoveUser = async (req, res) => {
   const id = req.body.userid
-  await deleteUserById(id);
+  await deleteUserById(id)
   res.redirect('/')
 }
 
